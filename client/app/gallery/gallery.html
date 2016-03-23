@@ -1,5 +1,11 @@
-<div xgallerify class="gallery">
-    <img ng-repeat="img in images" ng-src="{{img.url}}" />
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 gallery">
+        <div xgallerify="{ 'mode':'default', 'margin' : 10 }">
+            <img ng-repeat="img in images" ng-src="{{img.url}}" />
+        </div>
+    </div>
+    <div class="col-md-1 col-lg-1"></div>
 </div>
+
 
 <button ng-click="refresh()">Refresh</button>

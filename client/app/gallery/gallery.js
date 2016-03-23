@@ -16,7 +16,7 @@ angular.module('pixels.gallery', ['jtt_angular_xgallerify', 'ngRoute'])
         $scope.$watch("images", function (updated, old) {
             // Using $timeout to ensure that refresh happens after view is updated
             $timeout(function() {
-                $scope.$broadcast("angular-xGallerify.refresh")
+                $scope.$broadcast("angular-xGallerify.refresh");
             });
         });
 

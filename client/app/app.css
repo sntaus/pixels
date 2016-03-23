@@ -28,3 +28,17 @@
   content: "";
   padding: 0;
 }
+
+/* Custom CSS starts here */
+.logo {
+  font-family: 'Munro';
+  color: white !important;
+}
+
+.view-content {
+  margin-top: 50px;
+}
+
+.gallery {
+  padding-top: 10px;
+}
