@@ -1,7 +1,18 @@
-angular.module("pixels").factory("API", ["$http", function ($http) {
+angular.module("pixels").factory("API", ["$http", "baseUrl", "galleryEndpoint", "photoDetailsEndpoint", function ($http, baseUrl, galleryEndpoint, photoDetailsEndpoint) {
     return {
-        getGallery: function(images) {
-            $http({method: "POST"});
+        getGallery: function(success, failure) {
+            $http({
+                method: "POST",
+                url: baseUrl + galleryEndpoint
+            }).then(success, failure);
+        },
+
+        getDetails: function(photoId, success, failure) {
+            $http({
+                method: "POST",
+                url: baseUrl + photoDetailsEndpoint,
+                data: {"id": photoId}
+            }).then(success, failure);
         }
     }
 }]);
