@@ -18,7 +18,6 @@ angular.module('pixels', [
         $scope.usernameLogin = ''; // Username entered
         $scope.passwordLogin = ''; // Password entered
 
-
         // Check if logged in
         if($cookies.get("loggedIn")) {
             // Retain login info
@@ -37,7 +36,9 @@ angular.module('pixels', [
             $scope.loginView = false;
         };
         $scope.loginSuccess = function(data) {
+            $scope.loadingLogin = false;
             if(data.data.error == null){
+                $scope.loadingError = false;
                 var access_token = data.data.oauth_token;
                 var token_secret = data.data.oauth_secret;
 
@@ -48,10 +49,15 @@ angular.module('pixels', [
                 $window.location.reload(); // Reload to log user in
             }
             else{
+                $scope.loadingError = true;
             }
         };
-        $scope.loginFailure = function() {};
+        $scope.loginFailure = function() {
+            $scope.loadingLogin = false;
+            $scope.loginError = true;
+        };
         $scope.login = function() {
+            $scope.loadingLogin = true;
             API.login($scope.usernameLogin, $scope.passwordLogin, $scope.loginSuccess, $scope.loginFailure);
         };
 

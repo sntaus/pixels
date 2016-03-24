@@ -4,6 +4,7 @@
             <span class="glyphicon glyphicon-remove"></span>
         </a>
     </div>
+    <div class="loadingPhoto" ng-if="loadingPhoto"></div>
     <div class="like-bar" ng-if="$root.loggedIn">
         <a href="#/gallery" class="like-button not-liked" ng-if="!photo.liked" ng-click="like(photo)">
             <span class="glyphicon glyphicon-heart-empty"></span>

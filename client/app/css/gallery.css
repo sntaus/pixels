@@ -9,10 +9,7 @@
 
 .page-content {
     padding-top: 3px;
-    background: white;
     min-height: 100vh;
-    border-left: 1px solid #dfdfdf;
-    border-right: 1px solid #dfdfdf;
 }
 
 .animate-opacity {
@@ -32,3 +29,9 @@
     opacity: 0.5;
 }
 
+.loadingGallery{
+    background-image: url('../img/loading.svg');
+    background-size: 40px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}

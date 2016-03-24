@@ -31,22 +31,26 @@ angular.module('pixels.gallery', ['jtt_angular_xgallerify', 'ngRoute', 'ngAnimat
         };
         $scope.successGallery = function (data) {
             $scope.images = data.data;
-            $scope.loading = false;
+            $scope.loadingGallery = false;
         };
 
 
         $scope.failureGallery = function (data) {
-            $scope.loading = false;
+            $scope.loadingGallery = false;
         };
 
 
         // Code for photo viewer
         $scope.successLoad = function (data) {
             $scope.photo = data.data;
+            $scope.loadingPhoto = false;
         };
+        $scope.failureLoad = function(data) {
+            $scope.loadingPhoto = false;
+        }
         $scope.openPhoto = function (id) {
             $scope.photoView = true;
-            $scope.loginView = false;
+            $scope.loadingPhoto = true;
             API.getDetails(id, $rootScope.accessToken, $scope.successLoad);
         };
         $scope.closePhoto = function () {

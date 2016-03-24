@@ -64,3 +64,17 @@
     opacity: 0.8;
     color: red;
 }
+
+.loadingPhoto{
+    width: 40px;
+    height: 40px;
+    left: 50%;
+    top: 50%;
+    margin-left: -20px;
+    margin-top: -20px;
+    position: fixed;
+    background-image: url('../img/loading.svg');
+    background-size: 40px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
