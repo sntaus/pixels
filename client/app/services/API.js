@@ -9,9 +9,8 @@ angular.module("pixels").factory("API", ["$http", "baseUrl", "galleryEndpoint", 
 
         getDetails: function (photoId, success, failure) {
             $http({
-                method: "POST",
-                url: baseUrl + photoDetailsEndpoint,
-                data: {"id": photoId}
+                method: "GET",
+                url: baseUrl + photoDetailsEndpoint + "?id=" + photoId
             }).then(success, failure);
         }
     }

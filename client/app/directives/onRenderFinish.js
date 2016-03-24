@@ -6,6 +6,9 @@ angular.module('pixels')
                 element.find("img").bind("load", function(){
                     scope.$eval(attr.onRenderFinish);
                 });
+
+
+
             }
         }
     });

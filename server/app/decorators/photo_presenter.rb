@@ -9,7 +9,7 @@ class PhotoPresenter
 
   def process
     @photo_obj['user'] = {
-        'fullName' => @photo['user']['fullName'],
+        'fullname' => @photo['user']['fullname'],
         'avatar' => @photo['user']['userpic_url'],
         'username' => @photo['user']['username']
     }
@@ -17,6 +17,8 @@ class PhotoPresenter
     @photo_obj['url'] = @photo['image_url']
     @photo_obj['link'] = @photo['url']
     @photo_obj['liked'] = @photo['liked']
+    @photo_obj['name'] = @photo['name']
+    @photo_obj['description'] = @photo['description']
   end
 
   def as_json

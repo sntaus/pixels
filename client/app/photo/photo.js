@@ -9,14 +9,25 @@ angular.module('pixels.photo', ['ngRoute', 'ngAnimate'])
         });
     }])
 
-    .controller('PhotoCtrl', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
+    .controller('PhotoCtrl', ['$scope', '$routeParams', 'API', function ($scope, $routeParams, API) {
 
         // Sample data
         $scope.photo = {
-            url: "https://scontent-sea1-1.xx.fbcdn.net/hphotos-xaf1/t31.0-8/1974234_10203208776200749_673168005_o.jpg",
-            avatar: "https://scontent-sea1-1.xx.fbcdn.net/hphotos-xaf1/t31.0-8/1974234_10203208776200749_673168005_o.jpg",
-            caption: "TEDx conference 2014!",
-            likes: 20,
-            liked: true
+            url: '',
+            avatar: '',
+            caption: '',
+            liked: null
         };
+
+        $scope.successLoad = function(data){
+            $scope.photo = data.data;
+        };
+
+        $scope.failureLoad = function(data) {
+
+        };
+
+        API.getDetails($routeParams.photoid, $scope.successLoad, $scope.failureLoad);
+
+
     }]);

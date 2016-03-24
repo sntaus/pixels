@@ -15,6 +15,14 @@
     border-right: 1px solid #dfdfdf;
 }
 
-.popular-heading {
-    font-family: 'Munro'
+
+
+.blanket {
+    background: #fff;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 900;
 }
