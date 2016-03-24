@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('pixels.gallery', ['jtt_angular_xgallerify', 'ngRoute'])
+angular.module('pixels.gallery', ['jtt_angular_xgallerify', 'ngRoute', 'ngAnimate'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/gallery', {
@@ -9,16 +9,9 @@ angular.module('pixels.gallery', ['jtt_angular_xgallerify', 'ngRoute'])
         });
     }])
 
-    .controller('GalleryCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
+    .controller('GalleryCtrl', ['$scope', '$timeout', '$location', function ($scope, $timeout, $location) {
         $scope.images = [];
 
-        // Whenever images change, update the gallery
-        $scope.$watch("images", function (updated, old) {
-            // Using $timeout to ensure that refresh happens after view is updated
-            $timeout(function() {
-                $scope.$broadcast("angular-xGallerify.refresh");
-            });
-        });
 
 
         // Sample data
@@ -84,4 +77,16 @@ angular.module('pixels.gallery', ['jtt_angular_xgallerify', 'ngRoute'])
                 url: "https://scontent-sea1-1.xx.fbcdn.net/hphotos-xaf1/t31.0-8/1974234_10203208776200749_673168005_o.jpg"
             },
         ];
+
+        $scope.refreshGallery = function() {
+            $timeout(function() {
+                $scope.$broadcast("angular-xGallerify.refresh");
+            });
+        }
+
+
+
+
+
+
     }]);

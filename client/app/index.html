@@ -1,62 +1,68 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="pixels" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="pixels" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="pixels" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="pixels" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>
+<html lang="en" ng-app="pixels" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="pixels" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="pixels" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="pixels" class="no-js"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Pixels.</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="fonts/munro.css" />
-  <link rel="stylesheet" href="app.css" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pixels.</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="fonts/munro.css"/>
+    <link rel="stylesheet" href="bower_components/animate.css/animate.min.css"/>
+    <link rel="stylesheet" href="app.css"/>
 </head>
 <body ng-controller="HomeCtrl">
+<div class="wrapper">
+    <!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+        your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="row">
+            <div class="col-lg-1 col-md-1 hidden-sm hidden-xs"></div>
+            <div class="col-lg-7 col-md-6 col-sm-6 col-xs-6">
+                <a class="navbar-brand logo-anchor logo" href="#/index">Pixels.</a>
+            </div>
+            <div class="col-lg-4 col-md-5 col-sm-6 col-xs-6 right">
+                <a href="#/index" class="logout-button" ng-if="$root.loggedIn" ng-click="logout()">Logout</a>
+            </div>
+            <div class="col-lg-2 col-md-1 col-sm-1 hidden-xs"></div>
 
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="row">
-      <div class="col-lg-1 col-md-1 hidden-sm hidden-xs"></div>
-      <div class="col-lg-7 col-md-6 col-sm-6 col-xs-6">
-        <a class="navbar-brand logo-anchor logo" href="#/index">Pixels.</a>
-      </div>
-      <div class="col-lg-4 col-md-5 col-sm-6 col-xs-6 right">
-        <a href="#/index" class="logout-button" ng-if="$root.loggedIn" ng-click="logout()">Logout</a>
-      </div>
-      <div class="col-lg-2 col-md-1 col-sm-1 hidden-xs"></div>
+        </div>
+    </nav>
 
-    </div>
-  </nav>
-  <div class="view-content">
     <div ng-view></div>
-  </div>
 
 
+</div>
 
 
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<!-- dependency for angular-xGallerify -->
+<script src="bower_components/xGallerify/dist/jquery.xgallerify.min.js"></script>
+<!-- angular-xGallerify -->
+<script src="bower_components/angular-xGallerify/dist/angular-xgallerify.min.js"></script>
 
-  <!-- dependency for angular-xGallerify -->
-  <script src="bower_components/xGallerify/dist/jquery.xgallerify.min.js"></script>
-  <!-- angular-xGallerify -->
-  <script src="bower_components/angular-xGallerify/dist/angular-xgallerify.min.js"></script>
+<!-- app JS file -->
+<script src="app.js"></script>
 
-  <!-- app JS file -->
-  <script src="app.js"></script>
+<!-- other views -->
+<script src="gallery/gallery.js"></script>
+<script src="photo/photo.js"></script>
 
-  <!-- other views -->
-  <script src="gallery/gallery.js"></script>
-
-
-
-
+<!-- directives -->
+<script src="directives/onRenderFinish.js"></script>
 
 </body>
 </html>
