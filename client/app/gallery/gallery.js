@@ -10,7 +10,7 @@ angular.module('pixels.gallery', ['jtt_angular_xgallerify', 'ngRoute', 'ngAnimat
     }])
 
     .controller('GalleryCtrl', ['$scope', '$timeout', '$location', function ($scope, $timeout, $location) {
-        $scope.images = [];
+        $scope.images = []; // Array of images, to be populated using a service
 
 
 
@@ -79,6 +79,7 @@ angular.module('pixels.gallery', ['jtt_angular_xgallerify', 'ngRoute', 'ngAnimat
         ];
 
         $scope.refreshGallery = function() {
+            // Using timeout to run it after digest cycle in AngularJS
             $timeout(function() {
                 $scope.$broadcast("angular-xGallerify.refresh");
             });
