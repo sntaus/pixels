@@ -10,6 +10,7 @@ angular.module('pixels', [
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/gallery'});
     }])
-    .controller("HomeCtrl", ['$rootScope', '$scope', function ($rootScope, $scope) {
-        $scope.taus = "Yo";
+    .controller("HomeCtrl", ['$rootScope', '$scope', 'baseUrl', function ($rootScope, $scope, baseUrl) {
+
+
     }]);
