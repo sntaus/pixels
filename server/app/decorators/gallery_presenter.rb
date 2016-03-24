@@ -1,0 +1,3 @@
+class GalleryPresenter
+  
+end

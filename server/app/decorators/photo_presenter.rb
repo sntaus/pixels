@@ -1,0 +1,3 @@
+class PhotoPresenter
+
+end
