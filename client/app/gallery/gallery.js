@@ -11,14 +11,17 @@ angular.module('pixels.gallery', ['jtt_angular_xgallerify', 'ngRoute', 'ngAnimat
 
     .controller('GalleryCtrl', ['$scope', '$timeout', '$location', 'API', '$rootScope', function ($scope, $timeout, $location, API, $rootScope) {
         $scope.images = []; // Array of images, to be populated using a service
+        $scope.photo = {}; // Selected image for photo viewer - empty initially
+        $scope.photoViewer = false; // Whether or not photoviewer is currently on - initially false
 
+
+        // Code for gallery
         $scope.refreshGallery = function () {
             // Using timeout to run it after digest cycle in AngularJS
             $timeout(function () {
                 $scope.$broadcast("angular-xGallerify.refresh");
             });
         }
-
         $scope.successGallery = function (data) {
             $scope.images = data.data;
             $scope.loading = false;
@@ -29,32 +32,28 @@ angular.module('pixels.gallery', ['jtt_angular_xgallerify', 'ngRoute', 'ngAnimat
             $scope.loading = false;
         }
 
-        // Sample data
-        $scope.photo = {};
+
+
 
 
         // Code for photo viewer
-        $scope.photoViewer = false;
-
         $scope.successLoad = function (data) {
             $scope.photo = data.data;
         };
-
         $scope.failureLoad = function (data) {
         };
-
         $scope.openPhoto = function (id) {
             $scope.photoViewer = true;
             API.getDetails(id, $scope.successLoad, $scope.failureLoad);
         }
-
         $scope.closePhoto = function () {
             $scope.photo = {};
             $scope.photoViewer = false;
         }
 
 
-        $scope.loading = true;
+
+        $scope.loadingGallery = true;
         API.getGallery($scope.successGallery, $scope.failureGallery);
 
 

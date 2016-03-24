@@ -8,8 +8,4 @@ angular.module('pixels', [
     ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/gallery'});
-    }])
-    .controller("HomeCtrl", ['$rootScope', '$scope', 'baseUrl', function ($rootScope, $scope, baseUrl) {
-        $rootScope.images = [];
-
     }]);
