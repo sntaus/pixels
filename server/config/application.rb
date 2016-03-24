@@ -34,8 +34,12 @@ module Server
         :consumer_secret => 'nAAoHhewu6NkQu8Pe63vQ8jYE9obYxmuFkpiHMoY'
     }
 
-
-
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
 
 
   end

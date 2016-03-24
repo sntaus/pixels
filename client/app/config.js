@@ -4,6 +4,7 @@ angular.module("pixels").config(["$provide", function ($provide) {
     //API Endpoints
     $provide.constant("galleryEndpoint", "photo/all");
     $provide.constant("photoDetailsEndpoint", "photo/one");
+    $provide.constant("photoDetailsAuthorizedEndpoint", "photo/authorized");
     $provide.constant("loginEndpoint", "user/login");
 
 

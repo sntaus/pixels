@@ -14,8 +14,6 @@ angular.module('pixels.gallery', ['jtt_angular_xgallerify', 'ngRoute', 'ngAnimat
         $scope.images = []; // Array of images, to be populated using a service
         $scope.photo = {}; // Selected image for photo viewer - empty initially
         $scope.photoView = false; // Whether or not photo view is currently on - initially false
-        $scope.loggedIn = $rootScope.loggedIn; // Whether or not user is logged in - rootScope so that all views can access
-        $scope.accessToken = $rootScope.accessToken; // Information of user's access token - rootScope so that all views can access
 
         // Code for gallery
         $scope.refreshGallery = function () {
@@ -35,16 +33,17 @@ angular.module('pixels.gallery', ['jtt_angular_xgallerify', 'ngRoute', 'ngAnimat
         }
 
 
-
         // Code for photo viewer
         $scope.successLoad = function (data) {
             $scope.photo = data.data;
         };
-        $scope.failureLoad = function (data) {};
+        $scope.failureLoad = function (data) {
+            console.log(data.data);
+        };
         $scope.openPhoto = function (id) {
             $scope.photoView = true;
             $scope.loginView = false;
-            API.getDetails(id, $scope.successLoad, $scope.failureLoad);
+            API.getDetails(id, $rootScope.accessToken, $scope.successLoad, $scope.failureLoad);
         }
         $scope.closePhoto = function () {
             $scope.photo = {};

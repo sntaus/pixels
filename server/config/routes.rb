@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+
+
   post 'user/login'
+
+  post 'photo/authorized'
 
   get 'photo/all'
 
   get 'photo/one'
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -61,5 +67,4 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  match '*any' => 'application#options', :via => [:options]
 end

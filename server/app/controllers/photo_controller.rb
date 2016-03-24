@@ -11,14 +11,23 @@ class PhotoController < ApplicationController
   end
 
   def one
-    id = params[:id]
-    photo_obj = API.get_one(id)
+    photo_obj = API.get_one(params[:id])
     if photo_obj['error'].nil?
       photo = PhotoPresenter.new(photo_obj['photo'])
       render :json => photo.as_json
     else
       render :json => photo_obj
     end
+  end
+
+  def authorized
+      photo_obj = API.get_one(params[:id], true, params[:access_token], params[:token_secret])
+      if photo_obj['error'].nil?
+        photo = PhotoPresenter.new(photo_obj['photo'])
+        render :json => photo.as_json
+      else
+        render :json => photo_obj
+      end
   end
 
 end

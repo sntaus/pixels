@@ -9,13 +9,15 @@ class API
     return popular_photos
   end
 
-  def self.get_one(id, access_token = '', authorized = false)
+  def self.get_one(id, authorized = false, access_token = '', token_secret = '')
     config = Rails.configuration.API # API configuration
     if authorized
-      #url = config[:base_url] + 'v1/photos/' + id + '?consumer_key=' + config[:consumer_key]
-      photo_str = ''
+      consumer = OAuth::Consumer.new(config[:consumer_key], config[:consumer_secret], {
+          :site => config[:base_url]})
+      access_token = OAuth::AccessToken.new(consumer, access_token, token_secret)
+      photo_str = access_token.get('/v1/photos/' + id.to_s).body;
     else
-      url = config[:base_url] + 'v1/photos/' + id + '?consumer_key=' + config[:consumer_key]
+      url = config[:base_url] + '/v1/photos/' + id + '?consumer_key=' + config[:consumer_key]
       photo_str = Net::HTTP.get(URI.parse(url))
     end
 

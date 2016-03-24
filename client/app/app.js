@@ -27,6 +27,7 @@ angular.module('pixels', [
                 'access_token': $cookies.get('access_token'),
                 'token_secret': $cookies.get('token_secret')
             };
+            console.log($rootScope.accessToken);
         }
 
         // Code for login view
@@ -42,8 +43,8 @@ angular.module('pixels', [
                 var access_token = data.data.oauth_token;
                 var token_secret = data.data.oauth_secret;
                 // Store login info as cookie
-                $cookies.put("access_token", data.data.access_token);
-                $cookies.put("token_secret", data.data.token_secret);
+                $cookies.put("access_token", data.data.oauth_token);
+                $cookies.put("token_secret", data.data.oauth_token_secret);
                 $cookies.put("loggedIn", true);
             }
             else{
