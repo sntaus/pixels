@@ -1,7 +1,7 @@
 <div class="view-content">
     <div class="row">
         <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 gallery page-content">
-            <div xgallerify="{ 'mode':'default', 'margin' : 10 }">
+            <div xgallerify="{ 'mode':'default', 'margin' : 1 }">
                 <a ng-repeat="img in images" ng-href="#/photo/{{img.id}}">
                     <img ng-src="{{img.url}}" on-render-finish="refreshGallery()"/>
                 </a>
