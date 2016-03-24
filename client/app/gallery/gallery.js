@@ -10,36 +10,53 @@ angular.module('pixels.gallery', ['jtt_angular_xgallerify', 'ngRoute', 'ngAnimat
     }])
 
     .controller('GalleryCtrl', ['$scope', '$timeout', '$location', 'API', '$rootScope', function ($scope, $timeout, $location, API, $rootScope) {
-        $scope.images = $rootScope.images; // Array of images, to be populated using a service
+        $scope.images = []; // Array of images, to be populated using a service
 
-        $scope.refreshGallery = function() {
+        $scope.refreshGallery = function () {
             // Using timeout to run it after digest cycle in AngularJS
-            $timeout(function() {
+            $timeout(function () {
                 $scope.$broadcast("angular-xGallerify.refresh");
             });
         }
 
-        $scope.successGallery = function(data) {
-            $rootScope.images = data.data;
-            $scope.images = $rootScope.images;
+        $scope.successGallery = function (data) {
+            $scope.images = data.data;
             $scope.loading = false;
         }
 
 
-        $scope.failureGallery = function(data) {
+        $scope.failureGallery = function (data) {
             $scope.loading = false;
         }
 
+        // Sample data
+        $scope.photo = {};
 
-        if($scope.images.length < 1) {
-            $scope.loading = true;
 
-            API.getGallery($scope.successGallery, $scope.failureGallery);
+        // Code for photo viewer
+        $scope.photoViewer = false;
+
+        $scope.successLoad = function (data) {
+            $scope.photo = data.data;
+        };
+
+        $scope.failureLoad = function (data) {
+        };
+
+        $scope.openPhoto = function (id) {
+            $scope.photoViewer = true;
+            API.getDetails(id, $scope.successLoad, $scope.failureLoad);
+        }
+
+        $scope.closePhoto = function () {
+            $scope.photo = {};
+            $scope.photoViewer = false;
         }
 
 
-
-
+        $scope.loading = true;
+        API.getGallery($scope.successGallery, $scope.failureGallery);
 
 
     }]);
+

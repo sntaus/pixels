@@ -1,5 +1,11 @@
 'use strict';
 
+angular.module('pixels').directive('photo', function(){
+    return {
+        templateUrl: 'photo/photo.html'
+    }
+});
+/*
 angular.module('pixels.photo', ['ngRoute', 'ngAnimate'])
 
     .config(['$routeProvider', function ($routeProvider) {
@@ -31,3 +37,5 @@ angular.module('pixels.photo', ['ngRoute', 'ngAnimate'])
 
 
     }]);
+
+    */

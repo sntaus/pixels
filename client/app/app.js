@@ -4,7 +4,6 @@
 angular.module('pixels', [
         'ngRoute',
         'pixels.gallery',
-        'pixels.photo',
         'ngAnimate'
     ])
     .config(['$routeProvider', function ($routeProvider) {

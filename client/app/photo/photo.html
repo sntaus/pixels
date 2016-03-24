@@ -1,6 +1,6 @@
-<div class="show-image">
+<div class="show-image" ng-if="photoViewer">
     <div class="close-bar">
-        <a href="#/gallery" class="close-button">
+        <a ng-click="closePhoto()" class="close-button">
             <span class="glyphicon glyphicon-remove"></span>
         </a>
     </div>

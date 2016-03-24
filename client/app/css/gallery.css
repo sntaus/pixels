@@ -15,14 +15,19 @@
     border-right: 1px solid #dfdfdf;
 }
 
+.animate-opacity {
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out;
+    -ms-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+}
 
+.image-thumbnail {
+    opacity: 1;
 
-.blanket {
-    background: #fff;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    position: fixed;
-    z-index: 900;
+}
+
+.image-thumbnail:hover {
+    opacity: 0.5;
 }
