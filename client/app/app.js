@@ -10,7 +10,7 @@ angular.module('pixels', [
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/gallery'});
     }])
-    .controller('HomeCtrl', ['$scope', '$rootScope', '$cookies', 'API', function($scope, $rootScope, $cookies, API) {
+    .controller('HomeCtrl', ['$scope', '$rootScope', '$cookies', 'API', '$window', function($scope, $rootScope, $cookies, API, $window) {
         // Initialize variables
         $rootScope.loggedIn = false; // Whether or not user is logged in
         $rootScope.accessToken = {}; // If user is logged in, user access data
@@ -38,23 +38,29 @@ angular.module('pixels', [
             $scope.loginView = false;
         };
         $scope.loginSuccess = function(data) {
-            console.log(data.data);
             if(data.data.error == null){
                 var access_token = data.data.oauth_token;
                 var token_secret = data.data.oauth_secret;
+
                 // Store login info as cookie
                 $cookies.put("access_token", data.data.oauth_token);
                 $cookies.put("token_secret", data.data.oauth_token_secret);
                 $cookies.put("loggedIn", true);
+                $window.location.reload(); // Reload to log user in
             }
             else{
             }
         };
-        $scope.loginFailure = function() {
-            alert("error fail");
-        };
+        $scope.loginFailure = function() {};
         $scope.login = function() {
             API.login($scope.usernameLogin, $scope.passwordLogin, $scope.loginSuccess, $scope.loginFailure);
         };
+
+        $scope.logout = function() {
+            $cookies.remove("loggedIn");
+            $cookies.remove("access_token");
+            $cookies.remove("token_secret");
+            $window.location.reload();
+        }
 
     }]);
