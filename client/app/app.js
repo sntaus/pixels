@@ -11,6 +11,6 @@ angular.module('pixels', [
         $routeProvider.otherwise({redirectTo: '/gallery'});
     }])
     .controller("HomeCtrl", ['$rootScope', '$scope', 'baseUrl', function ($rootScope, $scope, baseUrl) {
-
+        $rootScope.images = [];
 
     }]);

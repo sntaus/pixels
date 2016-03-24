@@ -8,9 +8,13 @@
 
 
 .page-content {
-    padding-top: 10px;
+    padding-top: 3px;
     background: white;
     min-height: 100vh;
     border-left: 1px solid #dfdfdf;
     border-right: 1px solid #dfdfdf;
+}
+
+.popular-heading {
+    font-family: 'Munro'
 }

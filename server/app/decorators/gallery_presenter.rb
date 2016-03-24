@@ -10,8 +10,8 @@ class GalleryPresenter
   def process
     @gallery.each do |item|
       photo = {}
-      photo[:url] = item[:images][0][:url]
-      photo[:id] = item[:id]
+      photo[:url] = item['images'][0]['url']
+      photo[:id] = item['id']
       @gallery_obj.push(photo)
     end
   end

@@ -8,15 +8,15 @@ class PhotoPresenter
   end
 
   def process
-    @photo_obj[:user] = {
-        :fullName => @photo[:user][:fullName],
-        :avatar => @photo[:user][:userpic_url],
-        :username => @photo[:user][:username]
+    @photo_obj['user'] = {
+        'fullName' => @photo['user']['fullName'],
+        'avatar' => @photo['user']['userpic_url'],
+        'username' => @photo['user']['username']
     }
 
-    @photo_obj[:url] = @photo[:image_url]
-    @photo_obj[:link] = @photo[:url]
-    @photo_obj[:liked] = @photo[:liked]
+    @photo_obj['url'] = @photo['image_url']
+    @photo_obj['link'] = @photo['url']
+    @photo_obj['liked'] = @photo['liked']
   end
 
   def as_json

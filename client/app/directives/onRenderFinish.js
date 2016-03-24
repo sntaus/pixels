@@ -1,13 +1,11 @@
 angular.module('pixels')
-    .directive('onRenderFinish', function ($timeout) {
+    .directive('onRenderFinish', function () {
         return {
             restrict: 'A',
             link: function (scope, element, attr) {
-                if (scope.$last === true) {
-                    $timeout(function () {
-                        scope.$eval(attr.onRenderFinish);
-                    });
-                }
+                element.find("img").bind("load", function(){
+                    scope.$eval(attr.onRenderFinish);
+                });
             }
         }
     });

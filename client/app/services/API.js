@@ -2,7 +2,7 @@ angular.module("pixels").factory("API", ["$http", "baseUrl", "galleryEndpoint", 
     return {
         getGallery: function (success, failure) {
             $http({
-                method: "POST",
+                method: "GET",
                 url: baseUrl + galleryEndpoint
             }).then(success, failure);
         },

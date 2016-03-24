@@ -26,6 +26,7 @@ module Server
     config.autoload_paths += %W( #{config.root}/app/decorators )
     config.autoload_paths += %W( #{config.root}/app/services )
 
+
     # 500px API information
     config.API = {
         :base_url => 'https://api.500px.com/',

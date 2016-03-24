@@ -1,12 +1,12 @@
 <div class="view-content">
+
     <div class="row">
-        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 gallery page-content">
-            <div xgallerify="{ 'mode':'default', 'margin' : 1 }">
-                <a ng-repeat="img in images" ng-href="#/photo/{{img.id}}">
-                    <img ng-src="{{img.url}}" on-render-finish="refreshGallery()"/>
+        <div class="col-lg-12 col-md-12 gallery page-content">
+            <div xgallerify="{ 'mode': 'small', 'margin' : 3}">
+                <a ng-repeat="img in images" ng-href="#/photo/{{img.id}}" on-render-finish="refreshGallery()">
+                    <img ng-src="{{img.url}}" />
                 </a>
             </div>
         </div>
-        <div class="col-md-1 col-lg-1"></div>
     </div>
 </div>
