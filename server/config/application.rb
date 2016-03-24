@@ -22,7 +22,15 @@ module Server
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-    config.autoload_paths += %W( #{config.root}/app/services )
+
     config.autoload_paths += %W( #{config.root}/app/decorators )
+    config.autoload_paths += %W( #{config.root}/app/services )
+
+    # 500px API information
+    config.API = {
+        :base_url => 'https://api.500px.com/',
+        :consumer_key => 'Z0S8NZsi4QCo8sa9n9cBhJsE3Agjm3e167Rw9AOZ'
+    }
+
   end
 end
