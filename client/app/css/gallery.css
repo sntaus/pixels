@@ -1,0 +1,16 @@
+.view-content {
+    margin-top: 50px;
+}
+
+.gallery {
+    text-align: center
+}
+
+
+.page-content {
+    padding-top: 10px;
+    background: white;
+    min-height: 100vh;
+    border-left: 1px solid #dfdfdf;
+    border-right: 1px solid #dfdfdf;
+}
