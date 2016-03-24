@@ -37,18 +37,20 @@ Once you have installed those 3, you can run the following commands on your Term
 -------------------------
 To configure the server, please edit {$ROOT}/server/app/config/application.rb; change the values in the config.API variable. To configure other things, please refer to Rails' documentation.
 
-To configure the client, please edit {$ROOT}/client/app/config.js; change the baseUrl to whatever URL your Rails server will be running it.
+To configure the client, please edit {$ROOT}/client/app/config.js; change the baseUrl to whatever URL your Rails server will be running at.
 
 
 # Running the client and server
 -------------------------
 To run the server, install the dependencies for the server, configure it and run the following commands on Terminal:
-1. cd {$ROOT}/server
-2. rails server
+
+  1. cd {$ROOT}/server
+  2. rails server
 
 To run the client (client-server actually), install the dependencies for the client, configure it, run the server and then run the following commands on Terminal:
-1. cd {$ROOT}/client
-2. npm start
+
+  1. cd {$ROOT}/client
+  2. npm start
 
 # Accessing the app
 -------------------------
