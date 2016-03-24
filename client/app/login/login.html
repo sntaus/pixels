@@ -24,6 +24,9 @@
                             <div ng-class="{'loading': loadingLogin}" class="left">
                                 <span ng-if="loadingError" class="red loading-error">Sorry, could not log in.</span>
                             </div>
+                            <div ng-if="!(loadingLogin || loadingError)" class="no-account">
+                                <a href="http://500px.com" target="_blank">Register at 500px</a>
+                            </div>
                         </div>
                         <div class="col-lg-4 col-md-8 col-sm-6 col-xs-6 right">
                             <button ng-click="login()" class="btn btn-default">Login</button>

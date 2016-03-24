@@ -9,4 +9,8 @@
     font-family: 'Munro';
     color: white;
 }
-
+.no-account {
+    height: 35px;
+    text-align: left;
+    line-height:35px;
+}
