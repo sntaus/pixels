@@ -14,6 +14,13 @@ angular.module('pixels.gallery', ['jtt_angular_xgallerify', 'ngRoute', 'ngAnimat
         $scope.images = []; // Array of images, to be populated using a service
         $scope.photo = {}; // Selected image for photo viewer - empty initially
         $scope.photoView = false; // Whether or not photo view is currently on - initially false
+        $scope.imagesLoaded = 0;
+
+        $scope.$on("imageLoaded", function() {
+            $scope.imagesLoaded++;
+            if($scope.imagesLoaded == $scope.images.length)
+                $scope.refreshGallery();
+        });
 
         // Code for gallery
         $scope.refreshGallery = function () {
@@ -21,16 +28,16 @@ angular.module('pixels.gallery', ['jtt_angular_xgallerify', 'ngRoute', 'ngAnimat
             $timeout(function () {
                 $scope.$broadcast("angular-xGallerify.refresh");
             });
-        }
+        };
         $scope.successGallery = function (data) {
             $scope.images = data.data;
             $scope.loading = false;
-        }
+        };
 
 
         $scope.failureGallery = function (data) {
             $scope.loading = false;
-        }
+        };
 
 
         // Code for photo viewer
@@ -41,15 +48,15 @@ angular.module('pixels.gallery', ['jtt_angular_xgallerify', 'ngRoute', 'ngAnimat
             $scope.photoView = true;
             $scope.loginView = false;
             API.getDetails(id, $rootScope.accessToken, $scope.successLoad);
-        }
+        };
         $scope.closePhoto = function () {
             $scope.photo = {};
             $scope.photoView = false;
-        }
+        };
         $scope.like = function(photo) {
             API.likePhoto(photo.id, $rootScope.accessToken);
             photo.liked = true;
-        }
+        };
 
 
 

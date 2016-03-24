@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 gallery page-content">
             <div xgallerify="{ 'mode': 'small', 'margin' : 3}">
-                <a ng-repeat="img in images" ng-click="openPhoto(img.id)" on-render="refreshGallery()" class="image-thumbnail animate-opacity">
+                <a ng-repeat="img in images" ng-click="openPhoto(img.id)" class="image-thumbnail animate-opacity" image-loaded-event="refreshGallery()">
                     <img ng-src="{{img.url}}" />
                 </a>
             </div>

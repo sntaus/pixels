@@ -1,11 +1,11 @@
 angular.module('pixels')
-    .directive('onRender', function () {
+    .directive('imageLoadedEvent', function () {
         return {
             restrict: 'A',
             link: function (scope, element, attr) {
-                // Run on-render function every time the element gets rendered
+                // Run function every time an image renders
                 element.find("img").bind("load", function(){
-                    scope.$eval(attr.onRender);
+                    scope.$emit("imageLoaded");
                 });
             }
         }
