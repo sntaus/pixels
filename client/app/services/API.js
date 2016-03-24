@@ -1,4 +1,4 @@
-angular.module("pixels").factory("API", ["$http", "baseUrl", "galleryEndpoint", "photoDetailsEndpoint", function ($http, baseUrl, galleryEndpoint, photoDetailsEndpoint) {
+angular.module("pixels").factory("API", ["$http", "baseUrl", "galleryEndpoint", "photoDetailsEndpoint", "loginEndpoint", function ($http, baseUrl, galleryEndpoint, photoDetailsEndpoint, loginEndpoint) {
     return {
         getGallery: function (success, failure) {
             $http({
@@ -11,6 +11,13 @@ angular.module("pixels").factory("API", ["$http", "baseUrl", "galleryEndpoint", 
             $http({
                 method: "GET",
                 url: baseUrl + photoDetailsEndpoint + "?id=" + photoId
+            }).then(success, failure);
+        },
+
+        login: function(username, password, success, failure) {
+            $http({
+                method: "POST",
+                url: baseUrl + loginEndpoint
             }).then(success, failure);
         }
     }
