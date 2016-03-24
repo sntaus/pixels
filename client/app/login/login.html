@@ -1,0 +1,35 @@
+<div class="on-top show-login" ng-if="loginView">
+    <div class="close-bar">
+        <a ng-click="closeLogin()" class="close-button">
+            <span class="glyphicon glyphicon-remove"></span>
+        </a>
+    </div>
+    <div class="row login-box">
+        <div class="col-lg-4 col-md-3 col-sm-2 col-xs-1"></div>
+        <div class="col-lg-4 col-md-6 col-sm-8 col-xs-10">
+            <h1 class="login-header">Log In</h1>
+            <hr />
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="usernameLogin" placeholder="Username on 500px" ng-model="$parent.usernameLogin">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="passwordLogin" placeholder="Password" ng-model="$parent.passwordLogin">
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-7 col-sm-6 col-xs-6">
+                        <div ng-class="{'loading': loadingLogin, 'red': errorLogin}">{{loginMessage}}</div>
+                    </div>
+                    <div class="col-lg-4 col-md-8 col-sm-6 col-xs-6 right">
+                        <button ng-click="login()" class="btn btn-default">Login</button>
+                    </div>
+                </div>
+
+            </form>
+
+
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-2 col-xs-1"></div>
+
+    </div>
+</div>

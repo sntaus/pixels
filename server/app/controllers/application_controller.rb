@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
     headers['Access-Control-Request-Method'] = '*'
   end
 
+  def options
+    head :status => 200, :'Access-Control-Allow-Headers' => 'accept, content-type'
+  end
+
 end

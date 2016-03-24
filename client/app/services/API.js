@@ -17,7 +17,11 @@ angular.module("pixels").factory("API", ["$http", "baseUrl", "galleryEndpoint", 
         login: function(username, password, success, failure) {
             $http({
                 method: "POST",
-                url: baseUrl + loginEndpoint
+                url: baseUrl + loginEndpoint,
+                data: {
+                    'username': username,
+                    'password': password
+                }
             }).then(success, failure);
         }
     }

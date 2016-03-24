@@ -9,11 +9,13 @@ angular.module('pixels.gallery', ['jtt_angular_xgallerify', 'ngRoute', 'ngAnimat
         });
     }])
 
-    .controller('GalleryCtrl', ['$scope', '$timeout', '$location', 'API', '$rootScope', function ($scope, $timeout, $location, API, $rootScope) {
+    .controller('GalleryCtrl', ['$scope', '$timeout', '$location', 'API', '$rootScope', function ($scope, $timeout, $location, API,  $rootScope) {
+        // Initializing watched variables
         $scope.images = []; // Array of images, to be populated using a service
         $scope.photo = {}; // Selected image for photo viewer - empty initially
-        $scope.photoViewer = false; // Whether or not photoviewer is currently on - initially false
-
+        $scope.photoView = false; // Whether or not photo view is currently on - initially false
+        $scope.loggedIn = $rootScope.loggedIn; // Whether or not user is logged in - rootScope so that all views can access
+        $scope.accessToken = $rootScope.accessToken; // Information of user's access token - rootScope so that all views can access
 
         // Code for gallery
         $scope.refreshGallery = function () {
@@ -34,28 +36,24 @@ angular.module('pixels.gallery', ['jtt_angular_xgallerify', 'ngRoute', 'ngAnimat
 
 
 
-
-
         // Code for photo viewer
         $scope.successLoad = function (data) {
             $scope.photo = data.data;
         };
-        $scope.failureLoad = function (data) {
-        };
+        $scope.failureLoad = function (data) {};
         $scope.openPhoto = function (id) {
-            $scope.photoViewer = true;
+            $scope.photoView = true;
+            $scope.loginView = false;
             API.getDetails(id, $scope.successLoad, $scope.failureLoad);
         }
         $scope.closePhoto = function () {
             $scope.photo = {};
-            $scope.photoViewer = false;
+            $scope.photoView = false;
         }
 
 
 
-        $scope.loadingGallery = true;
-        API.getGallery($scope.successGallery, $scope.failureGallery);
-
-
+        $scope.loadingGallery = true; // Set loading status
+        API.getGallery($scope.successGallery, $scope.failureGallery); // Call server to get gallery data
     }]);
 

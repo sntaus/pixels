@@ -1,10 +1,10 @@
-<div class="show-image" ng-if="photoViewer">
+<div class="on-top" ng-if="photoView">
     <div class="close-bar">
         <a ng-click="closePhoto()" class="close-button">
             <span class="glyphicon glyphicon-remove"></span>
         </a>
     </div>
-    <div class="like-bar">
+    <div class="like-bar" ng-if="$root.loggedIn">
         <a href="#/gallery" class="like-button not-liked" ng-if="!photo.liked">
             <span class="glyphicon glyphicon-heart-empty"></span>
         </a>

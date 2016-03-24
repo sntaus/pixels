@@ -32,12 +32,3 @@
     opacity: 0.5;
 }
 
-.show-image.ng-enter {
-    animation: fadeIn 0.2s linear;
-    -webkit-animation: fadeIn 0.2s linear;
-}
-
-.show-image.ng-leave {
-    animation: fadeOut 0.2s linear;
-    -webkit-animation: fadeOut 0.2s linear;
-}
