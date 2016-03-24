@@ -5,7 +5,7 @@
         </a>
     </div>
     <div class="like-bar" ng-if="$root.loggedIn">
-        <a href="#/gallery" class="like-button not-liked" ng-if="!photo.liked">
+        <a href="#/gallery" class="like-button not-liked" ng-if="!photo.liked" ng-click="like(photo)">
             <span class="glyphicon glyphicon-heart-empty"></span>
         </a>
         <a href="#/gallery" class="like-button liked" ng-if="photo.liked">

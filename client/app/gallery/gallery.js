@@ -37,17 +37,18 @@ angular.module('pixels.gallery', ['jtt_angular_xgallerify', 'ngRoute', 'ngAnimat
         $scope.successLoad = function (data) {
             $scope.photo = data.data;
         };
-        $scope.failureLoad = function (data) {
-            console.log(data.data);
-        };
         $scope.openPhoto = function (id) {
             $scope.photoView = true;
             $scope.loginView = false;
-            API.getDetails(id, $rootScope.accessToken, $scope.successLoad, $scope.failureLoad);
+            API.getDetails(id, $rootScope.accessToken, $scope.successLoad);
         }
         $scope.closePhoto = function () {
             $scope.photo = {};
             $scope.photoView = false;
+        }
+        $scope.like = function(photo) {
+            API.likePhoto(photo.id, $rootScope.accessToken);
+            photo.liked = true;
         }
 
 

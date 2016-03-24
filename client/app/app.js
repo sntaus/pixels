@@ -27,7 +27,6 @@ angular.module('pixels', [
                 'access_token': $cookies.get('access_token'),
                 'token_secret': $cookies.get('token_secret')
             };
-            console.log($rootScope.accessToken);
         }
 
         // Code for login view

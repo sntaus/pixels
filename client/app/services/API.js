@@ -1,4 +1,4 @@
-angular.module("pixels").factory("API", ["$http", "baseUrl", "galleryEndpoint", "photoDetailsEndpoint", "loginEndpoint", "photoDetailsAuthorizedEndpoint", function ($http, baseUrl, galleryEndpoint, photoDetailsEndpoint, loginEndpoint, photoDetailsAuthorizedEndpoint) {
+angular.module("pixels").factory("API", ["$http", "baseUrl", "galleryEndpoint", "photoDetailsEndpoint", "loginEndpoint", "photoDetailsAuthorizedEndpoint", "likeEndpoint", function ($http, baseUrl, galleryEndpoint, photoDetailsEndpoint, loginEndpoint, photoDetailsAuthorizedEndpoint, likeEndpoint) {
     return {
         getGallery: function (success, failure) {
             $http({
@@ -24,6 +24,18 @@ angular.module("pixels").factory("API", ["$http", "baseUrl", "galleryEndpoint", 
                     }
                 }).then(success, failure);
             }
+        },
+
+        likePhoto: function(photoId, accessToken, success, failure) {
+            $http({
+                method: "POST",
+                url: baseUrl + likeEndpoint,
+                data: {
+                    'id': photoId,
+                    'access_token': accessToken.access_token,
+                    'token_secret': accessToken.token_secret
+                }
+            }).then(success, failure);
         },
 
         login: function (username, password, success, failure) {

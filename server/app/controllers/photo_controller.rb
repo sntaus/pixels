@@ -30,4 +30,13 @@ class PhotoController < ApplicationController
       end
   end
 
+  def like
+    like = API.like(params[:id], params[:access_token], params[:token_secret])
+    if like['photo'].nil?
+      render :json => like
+    else
+      render :json => {success: true}
+    end
+  end
+
 end

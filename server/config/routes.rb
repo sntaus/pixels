@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   post 'photo/authorized'
 
+  post 'photo/like'
+
   get 'photo/all'
 
   get 'photo/one'

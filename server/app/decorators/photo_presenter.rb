@@ -15,6 +15,7 @@ class PhotoPresenter
     }
 
     @photo_obj['url'] = @photo['image_url']
+    @photo_obj['id'] = @photo['id']
     @photo_obj['link'] = @photo['url']
     @photo_obj['liked'] = @photo['liked']
     @photo_obj['name'] = @photo['name']

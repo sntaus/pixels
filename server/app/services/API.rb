@@ -5,7 +5,7 @@ class API
   def self.get_popular
     config = Rails.configuration.API # API configuration
     popular_photos_str = Net::HTTP.get(URI.parse(config[:base_url] + 'v1/photos?feature=popular&rpp=100&image_size=3&consumer_key=' + config[:consumer_key]))
-    popular_photos = ActiveSupport::JSON.decode(popular_photos_str)
+    popular_photos = JSON.parse(popular_photos_str)
     return popular_photos
   end
 
@@ -15,7 +15,7 @@ class API
       consumer = OAuth::Consumer.new(config[:consumer_key], config[:consumer_secret], {
           :site => config[:base_url]})
       access_token = OAuth::AccessToken.new(consumer, access_token, token_secret)
-      photo_str = access_token.get('/v1/photos/' + id.to_s).body;
+      photo_str = access_token.get('/v1/photos/' + id.to_s).body
     else
       url = config[:base_url] + '/v1/photos/' + id + '?consumer_key=' + config[:consumer_key]
       photo_str = Net::HTTP.get(URI.parse(url))
@@ -23,6 +23,14 @@ class API
 
     photo = JSON.parse(photo_str)
     return photo
+  end
+
+  def self.like(id, access_token = '', token_secret = '')
+    config = Rails.configuration.API # API configuration
+    consumer = OAuth::Consumer.new(config[:consumer_key], config[:consumer_secret], {
+        :site => config[:base_url]})
+    access_token = OAuth::AccessToken.new(consumer, access_token, token_secret)
+    return JSON.parse(access_token.post('/v1/photos/' + id.to_s + '/vote?vote=1').body);
   end
 
   def self.login(username, password)
@@ -42,4 +50,5 @@ class API
     end
 
   end
+
 end
