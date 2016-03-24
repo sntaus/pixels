@@ -20,4 +20,5 @@ class PhotoController < ApplicationController
       render :json => photo_obj
     end
   end
+
 end

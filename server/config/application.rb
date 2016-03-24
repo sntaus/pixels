@@ -30,8 +30,13 @@ module Server
     # 500px API information
     config.API = {
         :base_url => 'https://api.500px.com/',
-        :consumer_key => 'Z0S8NZsi4QCo8sa9n9cBhJsE3Agjm3e167Rw9AOZ'
+        :consumer_key => 'Z0S8NZsi4QCo8sa9n9cBhJsE3Agjm3e167Rw9AOZ',
+        :consumer_secret => 'nAAoHhewu6NkQu8Pe63vQ8jYE9obYxmuFkpiHMoY'
     }
+
+
+
+
 
   end
 end
