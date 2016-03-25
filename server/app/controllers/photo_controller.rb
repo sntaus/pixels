@@ -1,3 +1,5 @@
+require 'API'
+
 class PhotoController < ApplicationController
   def all
     popular_photos_obj = API.get_popular

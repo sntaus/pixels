@@ -1,3 +1,5 @@
+require 'API'
+
 class UserController < ApplicationController
   def login
     user_login = API.login(params[:username], params[:password])

@@ -20,7 +20,9 @@ Run the following commands on Terminal to get NodeJS and npm set up (Linux) -
 If you are on a Mac, you can install NodeJS and npm from https://nodejs.org/en/
 Once NodeJS is installed, open Terminal and run the following commands:
   1. cd {$ROOT}/client
-  2. sudo npm install
+  2. npm install -g bower
+  3. npm install
+  4. bower install
 
 ### Server-side
 To install the server-side code, you must install Ruby, Rails and Bundler first.
