@@ -7,6 +7,7 @@ class PhotoPresenter
     process
   end
 
+  # Filter out data on photo to include fields needed on the client side
   def process
     @photo_obj['user'] = {
         'fullname' => @photo['user']['fullname'],
@@ -22,6 +23,7 @@ class PhotoPresenter
     @photo_obj['description'] = @photo['description']
   end
 
+  # as_json for decorated object
   def as_json
     @photo_obj.as_json
   end

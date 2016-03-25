@@ -61,6 +61,7 @@ angular.module('pixels', [
             API.login($scope.usernameLogin, $scope.passwordLogin, $scope.loginSuccess, $scope.loginFailure);
         };
 
+        // Log user out by removing all cookies and reloading page
         $scope.logout = function() {
             $cookies.remove("loggedIn");
             $cookies.remove("access_token");

@@ -3,7 +3,7 @@ angular.module('pixels')
         return {
             restrict: 'A',
             link: function (scope, element, attr) {
-                // Run function every time an image renders
+                // Emit "imageLoaded" event every time an image loads
                 element.find("img").bind("load", function(){
                     scope.$emit("imageLoaded");
                 });

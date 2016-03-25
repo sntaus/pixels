@@ -7,6 +7,7 @@ class GalleryPresenter
     process
   end
 
+  # Create an array of URLs and IDs of images
   def process
     @gallery.each do |item|
       photo = {}
@@ -16,6 +17,7 @@ class GalleryPresenter
     end
   end
 
+  # as_json for decorated object
   def as_json
     @gallery_obj.as_json
   end

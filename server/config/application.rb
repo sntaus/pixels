@@ -23,6 +23,8 @@ module Server
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
+
+    # Autoload decorators and services
     config.autoload_paths += %W( #{config.root}/app/decorators )
     config.autoload_paths += %W( #{config.root}/app/services )
 
@@ -34,6 +36,7 @@ module Server
         :consumer_secret => 'nAAoHhewu6NkQu8Pe63vQ8jYE9obYxmuFkpiHMoY'
     }
 
+    # Allow CORS
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
         origins '*'

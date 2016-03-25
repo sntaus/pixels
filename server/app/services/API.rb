@@ -2,6 +2,8 @@ require 'net/http'
 require 'oauth'
 
 class API
+
+  # Get popular photos from 500px
   def self.get_popular
     config = Rails.configuration.API # API configuration
     popular_photos_str = Net::HTTP.get(URI.parse(config[:base_url] + 'v1/photos?feature=popular&rpp=100&image_size=3&consumer_key=' + config[:consumer_key]))
@@ -9,6 +11,8 @@ class API
     return popular_photos
   end
 
+  # Get details on one photo from 500px
+  # Could be authorized or not authorized
   def self.get_one(id, authorized = false, access_token = '', token_secret = '')
     config = Rails.configuration.API # API configuration
     if authorized
@@ -25,6 +29,7 @@ class API
     return photo
   end
 
+  # Like a photo on 500px
   def self.like(id, access_token = '', token_secret = '')
     config = Rails.configuration.API # API configuration
     consumer = OAuth::Consumer.new(config[:consumer_key], config[:consumer_secret], {
@@ -33,6 +38,7 @@ class API
     return JSON.parse(access_token.post('/v1/photos/' + id.to_s + '/vote?vote=1').body);
   end
 
+  # Authenticate a user on 500px
   def self.login(username, password)
     config = Rails.configuration.API
     consumer = OAuth::Consumer.new(config[:consumer_key], config[:consumer_secret], {

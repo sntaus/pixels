@@ -1,6 +1,9 @@
 require 'API'
 
 class PhotoController < ApplicationController
+
+  # Get all photos
+  # route: /photo/all
   def all
     popular_photos_obj = API.get_popular
     if popular_photos_obj['error'].nil?
@@ -12,6 +15,8 @@ class PhotoController < ApplicationController
 
   end
 
+  # Get details of one photo (without access token)
+  # route: /photo/one
   def one
     photo_obj = API.get_one(params[:id])
     if photo_obj['error'].nil?
@@ -22,6 +27,8 @@ class PhotoController < ApplicationController
     end
   end
 
+  # Get details of one photo (with access token)
+  # route: /photo/authorized
   def authorized
       photo_obj = API.get_one(params[:id], true, params[:access_token], params[:token_secret])
       if photo_obj['error'].nil?
@@ -32,6 +39,8 @@ class PhotoController < ApplicationController
       end
   end
 
+  # Like a photo from a user's account
+  # route: /photo/like
   def like
     like = API.like(params[:id], params[:access_token], params[:token_secret])
     if like['photo'].nil?

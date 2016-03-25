@@ -1,6 +1,9 @@
 require 'API'
 
 class UserController < ApplicationController
+
+  # Authenticate a user
+  # route: /user/login
   def login
     user_login = API.login(params[:username], params[:password])
     if !user_login
@@ -9,4 +12,5 @@ class UserController < ApplicationController
       render :json => user_login.params
     end
   end
+
 end
