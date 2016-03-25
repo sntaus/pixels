@@ -4,6 +4,8 @@
 Pixels is an app based on 500px. It fetches 100 popular photos from 500px using their API and presents them in a gallery.
 It also lets users log in using their 500px credentials and then like pictures that they view from the gallery.
 
+Demo URL: http://bit.ly/pixels500px
+
 # Dependencies
 -------------------------
 
