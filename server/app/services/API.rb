@@ -21,7 +21,7 @@ class API
       access_token = OAuth::AccessToken.new(consumer, access_token, token_secret)
       photo_str = access_token.get('/v1/photos/' + id.to_s).body
     else
-      url = config[:base_url] + '/v1/photos/' + id + '?consumer_key=' + config[:consumer_key] + '&image_size=4'
+      url = config[:base_url] + '/v1/photos/' + id + '?consumer_key=' + config[:consumer_key] + '&image_size=5'
       photo_str = Net::HTTP.get(URI.parse(url))
     end
 
