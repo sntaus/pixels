@@ -1,10 +1,10 @@
 require 'API'
 
-class PhotoController < ApplicationController
+class PhotosController < ApplicationController
 
   # Get all photos
-  # route: /photo/all
-  def all
+  # route: GET /photos
+  def index
     popular_photos_obj = API.get_popular
     if popular_photos_obj['error'].nil?
       popular_photos = GalleryPresenter.new(popular_photos_obj['photos'])
@@ -16,8 +16,8 @@ class PhotoController < ApplicationController
   end
 
   # Get details of one photo (without access token)
-  # route: /photo/one
-  def one
+  # route: GET /photos/:id
+  def show
     photo_obj = API.get_one(params[:id])
     if photo_obj['error'].nil?
       photo = PhotoPresenter.new(photo_obj['photo'])
@@ -28,19 +28,19 @@ class PhotoController < ApplicationController
   end
 
   # Get details of one photo (with access token)
-  # route: /photo/authorized
+  # route: POST /photos/:id
   def authorized
-      photo_obj = API.get_one(params[:id], true, params[:access_token], params[:token_secret])
-      if photo_obj['error'].nil?
-        photo = PhotoPresenter.new(photo_obj['photo'])
-        render :json => photo.as_json
-      else
-        render :json => photo_obj
-      end
+    photo_obj = API.get_one(params[:id], true, params[:access_token], params[:token_secret])
+    if photo_obj['error'].nil?
+      photo = PhotoPresenter.new(photo_obj['photo'])
+      render :json => photo.as_json
+    else
+      render :json => photo_obj
+    end
   end
 
   # Like a photo from a user's account
-  # route: /photo/like
+  # route: GET /photos/:id/like
   def like
     like = API.like(params[:id], params[:access_token], params[:token_secret])
     if like['photo'].nil?

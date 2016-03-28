@@ -3,15 +3,11 @@ Rails.application.routes.draw do
 
   post 'user/login'
 
-  post 'photo/authorized'
+  resources :photos
 
-  post 'photo/like'
+  post 'photos/:id', to: 'photos#authorized'
 
-  get 'photo/all'
-
-  get 'photo/one'
-
-
+  post 'photos/:id/like', to: 'photos#like'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
